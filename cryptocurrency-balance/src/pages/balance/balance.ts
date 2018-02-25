@@ -19,6 +19,12 @@ export class BalancePage {
   serviceEndpoint: string = 'https://blockexplorer.com/api/addr/';
   response: any;
 
+  ETHserviceEndpoint: string = 'https://api.blockcypher.com/v1/eth/main/addrs/';
+  myETHaddress: string = '0xFD5618d808A2daBA84164e8fA47fFF82Dd2A50e5';
+  serviceParam: string = '/balance';
+  ETHresponse: any;
+  
+
   constructor(
     public http: HttpClient,
     public navCtrl: NavController,
@@ -34,6 +40,17 @@ export class BalancePage {
       .subscribe(response => {
         console.log(response);
         this.response = response;
+      }, error => {
+        console.error("Error while getting balance", error);
+      });
+      this.getETHBalance(); 
+  }
+
+  getETHBalance() {
+    this.http.get(this.ETHserviceEndpoint + this.myETHaddress + this.serviceParam)
+      .subscribe(ETHresponse => {
+        console.log(ETHresponse);
+        this.ETHresponse = ETHresponse;
       }, error => {
         console.error("Error while getting balance", error);
       });

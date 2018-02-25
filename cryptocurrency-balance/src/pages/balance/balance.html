@@ -39,4 +39,11 @@
         <ion-col col-6>{{response.balanceSat}}</ion-col>
       </ion-row>
     </ion-grid>
+
+    <ion-grid *ngIf="ETHresponse">
+      <ion-row>
+        <ion-col col-6>Balance wei</ion-col>
+        <ion-col col-6>{{(ETHresponse.balance)/1000000000000000000}}</ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>
