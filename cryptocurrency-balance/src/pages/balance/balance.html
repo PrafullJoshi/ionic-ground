@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar  color="primary">
-    <ion-title>My Balance Data</ion-title>
+    <ion-title>My Balance</ion-title>
     <ion-buttons end>
         <button ion-button icon-only  (click)="getBalance()">
           <ion-icon name="refresh"></ion-icon>
@@ -18,31 +18,24 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content color="primary">
-        {{myaddress}} 
-        <!-- <button ion-button icon-only (click)="getBalance()">
-          <ion-icon name="refresh"></ion-icon>
-        </button> -->
-    </ion-card-content>
-  </ion-card>
-  <ion-grid *ngIf="response">
-      <ion-row>
-        <ion-col col-12>Balance Details</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6>Balance bitcoin</ion-col>
-        <ion-col col-6>{{response.balance}}</ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6>Balance Satoshi</ion-col>
-        <ion-col col-6>{{response.balanceSat}}</ion-col>
-      </ion-row>
+    <ion-item>
+        <ion-label stacked>BitCoin Address</ion-label>
+        <ion-input type="text" value="{{myBTCaddress}}"></ion-input>
+    </ion-item>
+    <ion-grid *ngIf="response">
+        <ion-row>
+          <ion-col col-6>Balance bitcoin</ion-col>
+          <ion-col col-6>{{response.balance}}</ion-col>
+        </ion-row>
     </ion-grid>
 
+    <ion-item>
+        <ion-label stacked>Ethereum Address</ion-label>
+        <ion-input type="text" value="{{myETHaddress}}"></ion-input>
+    </ion-item>
     <ion-grid *ngIf="ETHresponse">
       <ion-row>
-        <ion-col col-6>Balance wei</ion-col>
+        <ion-col col-6>ETH Balance</ion-col>
         <ion-col col-6>{{(ETHresponse.balance)/1000000000000000000}}</ion-col>
       </ion-row>
     </ion-grid>

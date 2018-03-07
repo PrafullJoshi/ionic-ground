@@ -15,12 +15,12 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: 'balance.html',
 })
 export class BalancePage {
-  myaddress: string = '34udZLomYsQj3KC3nJziXdKZBmM2tsZdN4';
+  myBTCaddress: string = '';
   serviceEndpoint: string = 'https://blockexplorer.com/api/addr/';
   response: any;
 
   ETHserviceEndpoint: string = 'https://api.blockcypher.com/v1/eth/main/addrs/';
-  myETHaddress: string = '0xFD5618d808A2daBA84164e8fA47fFF82Dd2A50e5';
+  myETHaddress: string = '';
   serviceParam: string = '/balance';
   ETHresponse: any;
   
@@ -29,6 +29,8 @@ export class BalancePage {
     public http: HttpClient,
     public navCtrl: NavController,
     public navParams: NavParams) {
+      this.myBTCaddress = '34udZLomYsQj3KC3nJziXdKZBmM2tsZdN4';
+      this.myETHaddress = '0xFD5618d808A2daBA84164e8fA47fFF82Dd2A50e5';
   }
 
   ionViewDidLoad() {
@@ -36,7 +38,7 @@ export class BalancePage {
   }
 
   getBalance() {
-    this.http.get(this.serviceEndpoint + this.myaddress)
+    this.http.get(this.serviceEndpoint + this.myBTCaddress)
       .subscribe(response => {
         console.log(response);
         this.response = response;
